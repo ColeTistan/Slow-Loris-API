@@ -9,4 +9,4 @@ Slow lorises are a species of primates that can be found in Southeast Asia. They
 I want to build this API to help people learn about these amazing animals and why it is important to keep slow lorises from risking of becoming extinct due to human activity.
 
 ## Technologies Used
-Python, Beautiful Soup, CSV module, Flask, Bootstrap 5
+Python, CSV module, Django, Django REST Framework, Bootstrap 5
