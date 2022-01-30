@@ -1,0 +1,30 @@
+{
+  "name": "Slow-Loris-API",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ColeTistan/Slow-Loris-API.git"
+  },
+  "keywords": [],
+  "author": "Cole Tistan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ColeTistan/Slow-Loris-API/issues"
+  },
+  "homepage": "https://github.com/ColeTistan/Slow-Loris-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
