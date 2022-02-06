@@ -1,31 +1,42 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()
 require('../server/models/connectDB');
 const SlowLoris = require('../server/models/SlowLoris')
-const base_url = '/api'
-const slowLorisData = require('./data.json')
+const baseUrl = '/api'
 
 // GET - test route
-router.get(['/', `${base_url}/`], (req, res) => {
+router.get(['/', `${baseUrl}/`], (req, res) => {
   res.send("Welcome to the Slow Loris API!");
 })
 
-/*
-Endpoints to add for API:
-GET
-  - all data of slow lorises
-  - slow loris by ID
-  - slow loris by scientific name
-  - slow loris by common name
-  - slow lorises by native habitat
-  - slow lorises by conservation status
-  - random data of a slow loris
-*/
 
-// TODO - write GET endpoint for all slow loris data
-// router.get(`${base_url}/all`, (req, res) => {
-//   slowLorises = await SlowLoris.find({})
-  
-// })
+// GET - all data of slow lorises
+router.get(`${baseUrl}/all`, async (req, res) => {
+  try {
+    slowLorises = await SlowLoris.find()
+    res.json(slowLorises)
+  } catch(err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+// GET - slow loris by ID
+router.get(`${baseUrl}/:id`, async (req, res) => {
+  ID = req.params.id
+  try {
+    const slowLorisByID = await SlowLoris.findById(ID)
+    if (slowLorisByID == null) {
+      res.status(404).json({ message: "Cannot find slow loris..."})
+    } 
+    res.json(slowLorisByID)
+  } catch(err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+//  GET - slow loris by scientific name
+//  GET - slow loris by common name
+//  GET - slow lorises by native habitat
+//  GET - slow lorises by conservation status
+//  GET - random data of a slow loris
 
 module.exports = router
