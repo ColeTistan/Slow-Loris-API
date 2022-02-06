@@ -1,6 +1,3 @@
-/* 
-TODO - Create Slow Loris Model and push to mongoDB Atlas
-*/
 const mongoose = require('mongoose');
 const slowLorisSchema = new mongoose.Schema({
     common_name: {
