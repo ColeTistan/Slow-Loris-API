@@ -86,10 +86,45 @@ router.get(`${baseUrl}/common/:common`, (req, res) => {
 
 // TOBO - write GET endpoints for below routes
 //  GET - slow lorises by native habitat
-// router.get(`${baseUrl}/habitat/:habitat`, (req, res) => {})
+router.get(`${baseUrl}/habitat/:habitat`, (req, res) => {
+  let habitat = req.params.habitat
+  try {
+    SlowLoris.find({
+      distribution: {
+        $regex: habitat,
+        $options: "i"
+      }
+    }).then(slowLorisByHabitat => {
+      if (habitat == null) {
+        res.status(404).json({ message: "Error: data not found..." })
+      }
+      res.json(slowLorisByHabitat)
+    })
+  } catch (err) {
+    res.json({ message: err.message })
+  }
+})
 
 //  GET - slow lorises by conservation status
-// router.get(`${baseUrl}/status/:status`, (req, res) => {})
+router.get(`${baseUrl}/status/:status`, (req, res) => {
+  let status = req.params.status
+  try {
+    SlowLoris.find({ 
+      "conservation_status": {
+        $regex: status,
+        $options: "i"
+      }
+    })
+    .then(slowLorisByStatus => {
+      if (status == null) {
+        res.status(404).json({ message: "data not found..."})
+      }
+      res.json(slowLorisByStatus)  
+    })
+  } catch (err) {
+    res.json({ message: err.message })
+  }
+})
 
 //  GET - random data of a slow loris
 // router.get(`${baseUrl}/random/`, (req, res) => {})
