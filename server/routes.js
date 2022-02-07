@@ -1,42 +1,96 @@
 const express = require('express');
-const router = express.Router()
+const router = express.Router();
 require('../server/models/connectDB');
-const SlowLoris = require('../server/models/SlowLoris')
-const baseUrl = '/api'
+const SlowLoris = require('../server/models/SlowLoris');
+const baseUrl = '/api';
 
 // GET - test route
 router.get(['/', `${baseUrl}/`], (req, res) => {
-  res.send("Welcome to the Slow Loris API!");
+  res.send("Welcome to the Slow Loris API!")
 })
 
-
 // GET - all data of slow lorises
-router.get(`${baseUrl}/all`, async (req, res) => {
+router.get(`${baseUrl}/all`, (req, res) => {
   try {
-    slowLorises = await SlowLoris.find()
-    res.json(slowLorises)
+    SlowLoris.find().then(slowLorisData => {
+      res.json(slowLorisData)
+    })
   } catch(err) {
     res.status(500).json({ message: err.message })
   }
 })
 
 // GET - slow loris by ID
-router.get(`${baseUrl}/:id`, async (req, res) => {
-  ID = req.params.id
+router.get(`${baseUrl}/:id`, (req, res) => {
+  let ID = req.params.id
   try {
-    const slowLorisByID = await SlowLoris.findById(ID)
-    if (slowLorisByID == null) {
-      res.status(404).json({ message: "Cannot find slow loris..."})
-    } 
-    res.json(slowLorisByID)
+    SlowLoris.findById(ID).then(slowLorisByID => {
+      if (ID == null) {
+        res.status(404).json({ message: "Error: data not found..."})
+      }
+      res.json(slowLorisByID)
+    })
   } catch(err) {
     res.status(500).json({ message: err.message })
   }
 })
-//  GET - slow loris by scientific name
-//  GET - slow loris by common name
-//  GET - slow lorises by native habitat
-//  GET - slow lorises by conservation status
-//  GET - random data of a slow loris
 
+//  GET - slow loris by scientific name
+
+router.get(`${baseUrl}/scientific/:scientific`, async (req, res) => {
+  let scientificName = req.params.scientific
+  /*
+  * TODO - make try catch block reusable 
+  * with function for middleware handling
+  */
+  try {
+    SlowLoris.find({ 
+      scientific_name: {
+        $regex: scientificName,
+        $options: "i"
+      }
+    }).then(slowLorisByScientificName => {
+      if (scientificName == null) {
+        res.status(404).json({ message: "Error: data not found..."})
+      }
+      res.json(slowLorisByScientificName)
+    })
+  } catch(err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+//  GET - slow loris by common name
+router.get(`${baseUrl}/common/:common`, (req, res) => {
+  let commonName = req.params.common
+  /*
+  * TODO - make try catch block reusable 
+  * with function for middleware handling
+  */
+  try {
+    SlowLoris.find({
+      common_name: {
+        $regex: commonName,
+        $options: "i"
+      }
+    }).then(slowLorisByCommonName => {
+      if (commonName == null) {
+        res.status(404).json({ message: "Error: data not found..."})
+      }
+      res.json(slowLorisByCommonName)
+    })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+// TOBO - write GET endpoints for below routes
+//  GET - slow lorises by native habitat
+// router.get(`${baseUrl}/habitat/:habitat`, (req, res) => {})
+
+//  GET - slow lorises by conservation status
+// router.get(`${baseUrl}/status/:status`, (req, res) => {})
+
+//  GET - random data of a slow loris
+// router.get(`${baseUrl}/random/`, (req, res) => {})
 module.exports = router

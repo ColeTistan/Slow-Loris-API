@@ -28,6 +28,6 @@ const slowLorisSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-});
+})
 
 module.exports = mongoose.model('SlowLoris', slowLorisSchema)
