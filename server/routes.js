@@ -36,16 +36,11 @@ router.get(`${baseUrl}/:id`, (req, res) => {
 })
 
 //  GET - slow loris by scientific name
-
 router.get(`${baseUrl}/scientific/:scientific`, async (req, res) => {
   let scientificName = req.params.scientific
-  /*
-  * TODO - make try catch block reusable 
-  * with function for middleware handling
-  */
   try {
     SlowLoris.find({ 
-      scientific_name: {
+      "scientific_name": {
         $regex: scientificName,
         $options: "i"
       }
@@ -63,13 +58,9 @@ router.get(`${baseUrl}/scientific/:scientific`, async (req, res) => {
 //  GET - slow loris by common name
 router.get(`${baseUrl}/common/:common`, (req, res) => {
   let commonName = req.params.common
-  /*
-  * TODO - make try catch block reusable 
-  * with function for middleware handling
-  */
   try {
     SlowLoris.find({
-      common_name: {
+      "common_name": {
         $regex: commonName,
         $options: "i"
       }
@@ -84,13 +75,12 @@ router.get(`${baseUrl}/common/:common`, (req, res) => {
   }
 })
 
-// TOBO - write GET endpoints for below routes
 //  GET - slow lorises by native habitat
 router.get(`${baseUrl}/habitat/:habitat`, (req, res) => {
   let habitat = req.params.habitat
   try {
     SlowLoris.find({
-      distribution: {
+      "distribution": {
         $regex: habitat,
         $options: "i"
       }
@@ -109,23 +99,20 @@ router.get(`${baseUrl}/habitat/:habitat`, (req, res) => {
 router.get(`${baseUrl}/status/:status`, (req, res) => {
   let status = req.params.status
   try {
-    SlowLoris.find({ 
+    SlowLoris.find({
       "conservation_status": {
         $regex: status,
         $options: "i"
       }
-    })
-    .then(slowLorisByStatus => {
+    }).then(slowLorisByStatus => {
       if (status == null) {
-        res.status(404).json({ message: "data not found..."})
+        res.status(404).json({ message: "Error: data not found..." })
       }
-      res.json(slowLorisByStatus)  
+      res.json(slowLorisByStatus)
     })
   } catch (err) {
     res.json({ message: err.message })
   }
 })
 
-//  GET - random data of a slow loris
-// router.get(`${baseUrl}/random/`, (req, res) => {})
 module.exports = router
