@@ -1,8 +1,28 @@
 const express = require('express');
-const router = express.Router();
-require('../server/models/connectDB');
+const mongoose = require('mongoose');
 const SlowLoris = require('../server/models/SlowLoris');
 const baseUrl = '/api';
+const router = express.Router();
+require('../server/models/connectDB');
+
+// Middleware to handle requests passed from server to client
+const getSlowLorisData = async (req, res, next) => {
+  let slowLorisData
+  let ID = req.params.id
+  try {
+    if (!mongoose.isValidObjectId(ID)) {
+      return res.status(404).json({ message: "Error: cannot find slow loris data..." })
+    }
+    slowLorisData = await SlowLoris.findById(ID)
+      if (slowLorisData == null) {
+        return res.status(404).json({ message: "Error: cannot find slow loris data..." })
+      }
+    res.slowLorisData = slowLorisData
+    next()
+  } catch(err) {
+    res.status(500).json({ message: err.message })
+  }
+}
 
 // GET - test route
 router.get(['/', `${baseUrl}/`], (req, res) => {
@@ -21,18 +41,8 @@ router.get(`${baseUrl}/all`, (req, res) => {
 })
 
 // GET - slow loris by ID
-router.get(`${baseUrl}/:id`, (req, res) => {
-  let ID = req.params.id
-  try {
-    SlowLoris.findById(ID).then(slowLorisByID => {
-      if (ID == null) {
-        res.status(404).json({ message: "Error: data not found..."})
-      }
-      res.json(slowLorisByID)
-    })
-  } catch(err) {
-    res.status(500).json({ message: err.message })
-  }
+router.get(`${baseUrl}/:id`, getSlowLorisData, (req, res) => {
+  res.send(res.slowLorisData)
 })
 
 //  GET - slow loris by scientific name
@@ -45,8 +55,9 @@ router.get(`${baseUrl}/scientific/:scientific`, async (req, res) => {
         $options: "i"
       }
     }).then(slowLorisByScientificName => {
-      if (scientificName == null) {
+      if (slowLorisByScientificName.length === 0) {
         res.status(404).json({ message: "Error: data not found..."})
+        return
       }
       res.json(slowLorisByScientificName)
     })
@@ -65,9 +76,10 @@ router.get(`${baseUrl}/common/:common`, (req, res) => {
         $options: "i"
       }
     }).then(slowLorisByCommonName => {
-      if (commonName == null) {
+      if (slowLorisByCommonName.length === 0) {
         res.status(404).json({ message: "Error: data not found..."})
-      }
+        return
+      } 
       res.json(slowLorisByCommonName)
     })
   } catch (err) {
@@ -85,8 +97,9 @@ router.get(`${baseUrl}/habitat/:habitat`, (req, res) => {
         $options: "i"
       }
     }).then(slowLorisByHabitat => {
-      if (habitat == null) {
+      if (slowLorisByHabitat.length === 0) {
         res.status(404).json({ message: "Error: data not found..." })
+        return
       }
       res.json(slowLorisByHabitat)
     })
@@ -105,8 +118,9 @@ router.get(`${baseUrl}/status/:status`, (req, res) => {
         $options: "i"
       }
     }).then(slowLorisByStatus => {
-      if (status == null) {
+      if (slowLorisByStatus.length === 0) {
         res.status(404).json({ message: "Error: data not found..." })
+        return
       }
       res.json(slowLorisByStatus)
     })
