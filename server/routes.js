@@ -49,81 +49,78 @@ router.get(`${baseUrl}/:id`, getSlowLorisData, (req, res) => {
 router.get(`${baseUrl}/scientific/:scientific`, async (req, res) => {
   let scientificName = req.params.scientific
   try {
-    SlowLoris.find({ 
+    const slowLorisByScientificName = await SlowLoris.find({ 
       "scientific_name": {
         $regex: scientificName,
         $options: "i"
       }
-    }).then(slowLorisByScientificName => {
-      if (slowLorisByScientificName.length === 0) {
-        res.status(404).json({ message: "Error: data not found..."})
-        return
-      }
-      res.json(slowLorisByScientificName)
     })
+    if (slowLorisByScientificName.length === 0) {
+      return res.status(404).json({ message: "Error: data not found..."})
+    }
+    res.json(slowLorisByScientificName)
+
   } catch(err) {
     res.status(500).json({ message: err.message })
   }
 })
 
 //  GET - slow loris by common name
-router.get(`${baseUrl}/common/:common`, (req, res) => {
+router.get(`${baseUrl}/common/:common`, async (req, res) => {
   let commonName = req.params.common
   try {
-    SlowLoris.find({
+    const slowLorisByCommonName = await SlowLoris.find({
       "common_name": {
         $regex: commonName,
         $options: "i"
       }
-    }).then(slowLorisByCommonName => {
-      if (slowLorisByCommonName.length === 0) {
-        res.status(404).json({ message: "Error: data not found..."})
-        return
-      } 
-      res.json(slowLorisByCommonName)
     })
+    if (slowLorisByCommonName.length === 0) {
+      return res.status(404).json({ message: "Error: data not found..."})
+    } 
+    res.json(slowLorisByCommonName)
+
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
 })
 
 //  GET - slow lorises by native habitat
-router.get(`${baseUrl}/habitat/:habitat`, (req, res) => {
+router.get(`${baseUrl}/habitat/:habitat`, async (req, res) => {
   let habitat = req.params.habitat
   try {
-    SlowLoris.find({
+    const slowLorisByHabitat = await SlowLoris.find({
       "distribution": {
         $regex: habitat,
         $options: "i"
       }
-    }).then(slowLorisByHabitat => {
-      if (slowLorisByHabitat.length === 0) {
-        res.status(404).json({ message: "Error: data not found..." })
-        return
-      }
-      res.json(slowLorisByHabitat)
     })
+    if (slowLorisByHabitat.length === 0) {
+      return res.status(404).json({ message: "Error: data not found..." })
+    }
+    res.json(slowLorisByHabitat)
+    
   } catch (err) {
     res.json({ message: err.message })
   }
 })
 
 //  GET - slow lorises by conservation status
-router.get(`${baseUrl}/status/:status`, (req, res) => {
+router.get(`${baseUrl}/status/:status`, async (req, res) => {
   let status = req.params.status
   try {
-    SlowLoris.find({
+    const slowLorisByStatus = await SlowLoris.find({
       "conservation_status": {
         $regex: status,
         $options: "i"
       }
-    }).then(slowLorisByStatus => {
-      if (slowLorisByStatus.length === 0) {
-        res.status(404).json({ message: "Error: data not found..." })
-        return
-      }
-      res.json(slowLorisByStatus)
     })
+    if (slowLorisByStatus.length === 0) {
+      res.status(404).json({ message: "Error: data not found..." })
+      return
+    }
+    res.json(slowLorisByStatus)
+
   } catch (err) {
     res.json({ message: err.message })
   }

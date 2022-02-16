@@ -1,6 +1,6 @@
 /* 
-TODO - Connect to mongoDB collection on Atlas
-*/
+ * Connect to mongoDB cluster on Atlas
+ */
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI, {
     useNewURLParser: true, 
