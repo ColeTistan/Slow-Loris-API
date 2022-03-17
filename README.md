@@ -14,6 +14,7 @@ I want to build this API to help people learn about these amazing animals and wh
 ## HTTP Endpoints
 ### `GET - /api/all`
 Gets All slow loris data
+<br/>
 `https://slow-loris-api.herokuapp.com/api/all`
 ```
 [
@@ -39,6 +40,7 @@ Gets All slow loris data
 
 ### `GET - /api/{id}`
 Gets slow loris by ID
+<br/>
 `https://slow-loris-api.herokuapp.com/api/61ff53ccf22e0e457c704645`
 
 ```
@@ -60,6 +62,7 @@ Gets slow loris by ID
 
 ### `GET - /api/scientific/{name}`
 Gets slow loris by scientific name
+<br/>
 `https://slow-loris-api.herokuapp.com/api/scientific/Nycticebus coucang`
 ```
 [
@@ -84,6 +87,7 @@ Gets slow loris by scientific name
 
 ### `GET - /api/common/{name}`
 Gets slow loris by common name
+<br/>
 `https://slow-loris-api.herokuapp.com/api/common/javan`
 ```
 [
@@ -106,6 +110,7 @@ Gets slow loris by common name
 
 ### `GET - /api/habitat/{location}`
 Gets slow loris by habitat
+<br/>
 `https://slow-loris-api.herokuapp.com/api/habitat/laos`
 ```
 [
@@ -131,6 +136,7 @@ Gets slow loris by habitat
 
 ### `GET - /api/status/{status}`
 Gets slow loris by conservation status
+<br/>
 `https://slow-loris-api.herokuapp.com/api/status/vulnerable`
 ```
 [
