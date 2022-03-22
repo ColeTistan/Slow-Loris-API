@@ -14,7 +14,7 @@ export class Navbar extends Component {
   render() {
     return (
     <div>
-      <nav className='brown lighten-1'>
+      <nav className="orange darken-1">
         <div className="nav-wrapper">
           <Link to="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
           <ul className="right hide-on-med-and-down">
@@ -28,7 +28,8 @@ export class Navbar extends Component {
               <a
                 href="https://ko-fi.com/cctistan" 
                 target="_blank" 
-                rel="noreferrer">
+                rel="noreferrer"
+              >
                 Sponsor
               </a>
             </li>
