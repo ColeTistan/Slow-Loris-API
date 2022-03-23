@@ -3,15 +3,21 @@ import { Link } from 'react-router-dom';
 
 export const Home = () => {
 
-  const [slowLorises, setSlowLorises] = useState([]);
+  const [slowLoris, setSlowLoris] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://slow-loris-api.herokuapp.com/api/all')
+      const data = await response.json()
+      const randomData = data[Math.floor(Math.random() * data.length)]
+      setSlowLoris(randomData)
+    } catch (error) {
+      console.error('error', error)
+    }
+  }
   useEffect(() => {
-    fetch('https://slow-loris-api.herokuapp.com/api/61ff53ccf22e0e457c704643')
-      .then(response => response.json())
-      .then(data => {
-        setSlowLorises(data)
-      })
+    fetchData()
   }, [])
-  console.log(slowLorises)
 
   return (
     <div className="container">
@@ -22,7 +28,7 @@ export const Home = () => {
         <div className="col s12 m6">
           <img 
             className="materialboxed responsive-img z-depth-2" 
-            src={slowLorises.image_url} 
+            src={slowLoris.image_url} 
             alt="Slow Loris"
           />
         </div>

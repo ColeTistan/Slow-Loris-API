@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 
 export class Footer extends Component {
   render() {
+    const footerStyle = {
+      "marginTop": "4.5rem"
+    }
     return (
       <div>
-        <footer className="page-footer orange darken-2">
+        <footer className="page-footer orange darken-2" style={footerStyle}>
           <div className="container">
             <div className="row">
               <div className="col s12 center-align">
