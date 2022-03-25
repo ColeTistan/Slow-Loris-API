@@ -12,9 +12,12 @@ export class Navbar extends Component {
   }
 
   render() {
+    const navbarStyle = {
+      "marginBottom": "3rem"
+    }
     return (
     <div>
-      <nav className="orange darken-1">
+      <nav className="orange darken-1" style={navbarStyle}>
         <div className="nav-wrapper">
           <Link to="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
           <ul className="right hide-on-med-and-down">

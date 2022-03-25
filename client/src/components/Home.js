@@ -34,8 +34,8 @@ export const Home = () => {
         </div>
         <div className="col s12 m6">
           <h5 className="center-align">The cutest and coolest API to learn about Slow Lorises!</h5>
-          <h5 className="center-align">What is a slow loris?</h5>
           <h5 className="left-align">
+            You might be wondering... What is a slow loris? Glad you ask!
             Slow lorises are a species of primates that can be found in
             Southeast Asia. They are known for their large eyes, which 
             are part of their adaption as nocturnal animals to be active
