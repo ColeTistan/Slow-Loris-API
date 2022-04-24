@@ -1,60 +1,37 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Navbar as NavigationBar, Container, Nav } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export class Navbar extends Component {
 
-  componentDidMount() {
-    const materialize = window.M;
-    document.addEventListener('DOMContentLoaded', () => {
-      let elems = document.querySelectorAll('.sidenav');
-      let instances = materialize.Sidenav.init(elems, {});
-    });
-  }
-
   render() {
-    const navbarStyle = {
-      "marginBottom": "3rem"
-    }
     return (
     <div>
-      <nav className="orange darken-1" style={navbarStyle}>
-        <div className="nav-wrapper">
-          <Link to="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
-          <ul className="right hide-on-med-and-down">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/documentation">Documentation</Link>
-            </li>
-            <li>
-              <a
+      <NavigationBar bg="warning" expand="lg" className='mb-4'>
+        <Container>
+          <LinkContainer to="/">
+            <NavigationBar.Brand>Slow Loris API</NavigationBar.Brand>
+          </LinkContainer>
+          <NavigationBar.Toggle aria-controls="responsive-navbar-nav" />
+          <NavigationBar.Collapse id="responsive-navbar-nav" className='justify-content-end'>
+            <Nav className="text-center">
+              <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/documentation">
+                <Nav.Link>Documentation</Nav.Link>
+              </LinkContainer>
+              <Nav.Link 
                 href="https://ko-fi.com/cctistan" 
                 target="_blank" 
                 rel="noreferrer"
               >
                 Sponsor
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <ul className="sidenav" id="mobile-demo">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/documentation">Documentation</Link>
-        </li>
-        <li>
-          <a
-            href="https://ko-fi.com/cctistan" 
-            target="_blank" 
-            rel="noreferrer">
-            Sponsor
-          </a>
-        </li>
-      </ul>
+              </Nav.Link>
+            </Nav>
+          </NavigationBar.Collapse>
+        </Container>
+      </NavigationBar>
     </div>
     )
   }

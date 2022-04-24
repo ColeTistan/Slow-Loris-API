@@ -14,8 +14,8 @@ function App() {
           <Route path="/documentation" element={<Documentation/>} />
           <Route path="https://ko-fi.com/cctistan" />  
         </Routes> 
-        <Footer />
-      </Router>
+        {/* <Footer /> */}
+       </Router>
     </div>
   );
 }
