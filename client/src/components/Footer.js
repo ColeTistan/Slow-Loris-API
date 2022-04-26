@@ -2,34 +2,16 @@ import React, { Component } from 'react'
 
 export class Footer extends Component {
   render() {
-    const footerStyle = {
-      "marginTop": "4.5rem"
-    }
     return (
       <div>
-        <footer className="page-footer orange darken-2" style={footerStyle}>
-          <div className="container">
-            <div className="row">
-              <div className="col s12 center-align">
-                <h5 className="white-text">Slow Loris API</h5>
-                <p className="grey-text text-lighten-4">The data used for this project was researched on various websites such as Wikipedia and San Diego Zoo's official webpage.</p>
-              </div>
-            </div>
+        <footer class="bg-warning text-center text-lg-start">
+          <div class="text-center p-3 col">
+            &copy; 2022 Cole Tistan: &nbsp;
+            <a class="text-dark" href="https://cctistan.com/">
+              cctistan.com
+              </a>
           </div>
-          <div className="footer-copyright">
-            <div className="container">
-              &copy; 2022 Cole Tistan
-              <a 
-              className="grey-text text-lighten-4 right"
-              href="https://github.com/ColeTistan/Slow-Lorises"
-              target="_blank"
-              rel="noreferrer"
-              >
-                Github
-            </a>
-            </div>
-          </div>
-        </footer>
+        </footer>      
       </div>
     )
   }
