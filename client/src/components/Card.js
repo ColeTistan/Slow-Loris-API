@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card as CardObj, Badge } from 'react-bootstrap'
 
 function Card(props) {
   const resultStyle = {
@@ -6,18 +7,19 @@ function Card(props) {
   }
   return (
     <div>
-      <div className="card light-blue darken-2">
-        <div className="card-content white-text center-align">
-          <span className="card-title center-align">
-          GET - {props.title}
-          </span>
-          <a className="white-text" href={props.url} target="_blank">{props.url}</a>
-          <hr/>
-          <pre className="white-text" style={resultStyle}>
+      <CardObj>
+        <CardObj.Body className="text-center bg-warning text-dark">
+          <CardObj.Title className="fs-3">
+            GET - {props.title}
+          </CardObj.Title>
+          <CardObj.Text>
+            <a className="text-decoration-none text-dark" href={props.url} target="_blank">{props.url}</a>
+          </CardObj.Text>
+          <pre style={resultStyle} className="bg-light p-3 rounded">
             <code>{props.results}</code>
           </pre>
-        </div>
-      </div>
+        </CardObj.Body>
+      </CardObj>
     </div>
   )
 }

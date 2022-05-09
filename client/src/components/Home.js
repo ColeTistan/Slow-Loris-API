@@ -23,7 +23,7 @@ export const Home = () => {
 
 
   return (
-    <div className="my-5">
+    <div className=" mt-5 mb-3">
       <Container>
         <Row xs={1} md={2} className="g-3">
           <Col className="text-center">
@@ -52,7 +52,7 @@ export const Home = () => {
               className="btn btn-lg btn-warning" 
               to="/documentation"
             >
-              Learn More
+              Github
             </Link>
           </Col>
           <Col className="text-center">

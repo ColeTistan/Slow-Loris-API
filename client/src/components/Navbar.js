@@ -16,20 +16,6 @@ export class Navbar extends Component {
           <NavigationBar.Toggle aria-controls="responsive-navbar-nav" />
           <NavigationBar.Collapse id="responsive-navbar-nav" className='justify-content-end'>
             <Nav className="text-center">
-              <LinkContainer to="/">
-                <Nav.Link>
-                  <i className='bi-house'></i>
-                  &nbsp;
-                  Home
-                </Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/documentation">
-                <Nav.Link>
-                  <i className='bi-file-text'></i>
-                  &nbsp;
-                  Documentation
-                </Nav.Link>
-              </LinkContainer>
               <Nav.Link 
                 href="https://ko-fi.com/cctistan" 
                 target="_blank" 
