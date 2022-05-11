@@ -10,12 +10,13 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" exact element={<Home/>} />
-          <Route path="/documentation" element={<Documentation/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="https://github.com/ColeTistan/Slow-Lorises" />
           <Route path="https://ko-fi.com/cctistan" />  
         </Routes> 
+        <Documentation />
         <Footer />
-      </Router>
+       </Router>
     </div>
   );
 }

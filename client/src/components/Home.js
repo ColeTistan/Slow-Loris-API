@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { Image, Container, Row, Col } from 'react-bootstrap';
 
 export const Home = () => {
 
@@ -19,54 +20,53 @@ export const Home = () => {
     fetchData()
   }, [])
 
+
+
   return (
-    <div className="container">
-      <h4 className="center-align">
-        Welcome to the Slow Loris API!
-      </h4>
-      <div className="row">
-        <div className="col s12 m6">
-          <img 
-            className="materialboxed responsive-img z-depth-2" 
-            src={slowLoris.image_url} 
-            alt="Slow Loris"
-          />
-        </div>
-        <div className="col s12 m6">
-          <h5 className="center-align">The cutest and coolest API to learn about Slow Lorises!</h5>
-          <h5 className="left-align">
-            You might be wondering... What is a slow loris? Glad you ask!
-            Slow lorises are a species of primates that can be found in
-            Southeast Asia. They are known for their large eyes, which 
-            are part of their adaption as nocturnal animals to be active
-            during the night. Eight known species of slow lorises exist 
-            and all of which are considered "vulnerable" or "endangered" 
-            animals due to deforestation and illegal pet trade in the black market. 
-            Currently, conservation efforts towards slow lorises have prevailed such
-            as education to learn about them and protecting their natural habitats from human activity.
-          </h5>
-        </div>
-      </div>
-      <div className="row center-align container">
-        <div className="col s12 m6">
-          <Link
-            className="waves-effect waves-light btn-large orange darken-1" 
-            to="/documentation"
-          >
-            Learn More
-          </Link>
-        </div>
-        <div className="col s12 m6">
-          <a
-            className="waves-effect waves-light btn-large orange darken-1" 
-            href="https://ko-fi.com/cctistan" 
-            target="_blank" 
-            rel="noreferrer"
-          >
-            Like my Work? 
-          </a>
-        </div>
-      </div>
+    <div className=" mt-5 mb-3">
+      <Container>
+        <Row xs={1} md={2} className="g-3">
+          <Col className="text-center">
+            <Image
+              thumbnail="true"
+              src={slowLoris.image_url} 
+              alt="Slow Loris"
+            />
+          </Col>
+          <Col className="text-center">
+            <h4 className="text-center fw-light">The cutest, coolest API to learn about Slow Lorises!</h4>
+            <p className="fw-normal fs-6">
+              You might be wondering... What is a slow loris? Glad you ask!
+              Slow lorises are a species of primates that can be found in
+              Southeast Asia. They are known for their large eyes, which 
+              are part of their adaption as nocturnal animals to be active
+              during the night. Eight known species of slow lorises exist 
+              and all of which are considered "vulnerable" or "endangered" 
+              animals due to deforestation and illegal pet trade in the black market. 
+              Currently, conservation efforts towards slow lorises have prevailed such
+              as education to learn about them and protecting their natural habitats from human activity.
+            </p>
+          </Col>
+          <Col className="text-center">
+            <Link
+              className="btn btn-lg btn-warning" 
+              to="/documentation"
+            >
+              Github
+            </Link>
+          </Col>
+          <Col className="text-center">
+            <a
+              className="btn btn-lg btn-warning mb-3" 
+              href="https://ko-fi.com/cctistan" 
+              target="_blank" 
+              rel="noreferrer"
+            >
+              Like my Work? 
+            </a>
+          </Col>
+        </Row>
+      </Container>
     </div>
   )
 }
