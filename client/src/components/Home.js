@@ -48,12 +48,14 @@ export const Home = () => {
             </p>
           </Col>
           <Col className="text-center">
-            <Link
+            <a
               className="btn btn-lg btn-warning" 
-              to="/documentation"
+              href="https://github.com/ColeTistan/Slow-Lorises" 
+              target="_blank" 
+              rel="noreferrer"
             >
               Github
-            </Link>
+            </a>
           </Col>
           <Col className="text-center">
             <a
