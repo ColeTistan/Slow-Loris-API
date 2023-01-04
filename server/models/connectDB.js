@@ -2,7 +2,8 @@
  * Connect to mongoDB cluster on Atlas
  */
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.set("strictQuery", false);
+mongoose.connect(`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.tc3pn.mongodb.net/slowLorisAPI`, {
     useNewURLParser: true, 
     useUnifiedTopology: true
   }
