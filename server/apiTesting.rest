@@ -1,17 +1,17 @@
 # All slow lorises
-https://slow-loris-api.herokuapp.com/api/all
+https://slow-loris-api.onrender.com/api/all
 
 # Slow loris by ID
-https://slow-loris-api.herokuapp.com/api/61ff53ccf22e0e457c704641
+https://slow-loris-api.onrender.com/api/61ff53ccf22e0e457c704641
 
 # Slow loris by scientific name
-https://slow-loris-api.herokuapp.com/api/scientific/coucang
+https://slow-loris-api.onrender.com/api/scientific/coucang
 
 # Slow loris by common name
-https://slow-loris-api.herokuapp.com/api/common/javan
+https://slow-loris-api.onrender.com/api/common/javan
 
 # Slow loris by native habitat
-https://slow-loris-api.herokuapp.com/api/habitat/laos
+https://slow-loris-api.onrender.com/api/habitat/laos
 
 # Slow loris by conservation status
-https://slow-loris-api.herokuapp.com/api/status/vulnerable
+https://slow-loris-api.onrender.com/api/status/vulnerable
