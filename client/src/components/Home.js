@@ -8,7 +8,7 @@ export const Home = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://slow-loris-api.herokuapp.com/api/all')
+      const response = await fetch('https://slow-loris-api.onrender.com/api/all')
       const data = await response.json()
       const randomData = data[Math.floor(Math.random() * data.length)]
       setSlowLoris(randomData)
