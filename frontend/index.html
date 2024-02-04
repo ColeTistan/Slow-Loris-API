@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slow Loris API</title>
   </head>
-  <body>
-    <header class="bg-orange-600 text-neutral-100 py-4 px-9">
+  <body class="flex flex-col min-h-dvh">
+    <header
+      class="bg-orange-600 text-neutral-100 font-semibold tracking-wider py-4 px-9 mb-8 shadow-lg"
+    >
       <p class="text-2xl text-center">Slow Loris API</p>
     </header>
     <main class="container mx-auto">
-      <section class="grid grid-cols-1 md:grid-cols-2">
-        <div id="random-image-box">
-          <img class="w-60 h-auto" src="" alt="random image" />
-        </div>
-        <div>
-          <p class="text-2xl text-center">
-            The cutest, coolest API to learn about Slow Lorises!
-          </p>
+      <section id="main-section">
+        <p class="section-title">
+          The cutest, coolest API to learn about Slow Lorises!
+        </p>
+        <div class="px-1 md:px-16 leading-7">
           <p>
             You might be wondering... What is a slow loris? Glad you ask! Slow
             lorises are a species of primates that can be found in Southeast
@@ -33,8 +32,21 @@
           </p>
         </div>
       </section>
+      <section class="documentation-section">
+        <p class="section-title">Documentation</p>
+        <div
+          id="documentation-grid"
+          class="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-5"
+        ></div>
+      </section>
     </main>
-    <footer></footer>
+    <footer
+      class="footer"
+    >
+      <p>&copy; Cole Tistan</p>
+      <a class="footer-link" href="https://cctistan.com/">cctistan.com</a>
+      <a class="footer-link" href="https://github.com/ColeTistan/Slow-Lorises">Github</a>
+    </footer>
     <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
