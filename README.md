@@ -162,5 +162,5 @@ Gets slow loris by conservation status
 ##### - MongoDB
 ##### - Express
 ##### - NodeJS
-##### - React
-##### - Materialize
+##### - Vite (JS)
+##### - Tailwind CSS
